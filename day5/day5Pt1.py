@@ -19,15 +19,17 @@ with open('input.txt') as inputFile:
       if crateLetter != ' ':
         crateLayout[letterI].append(crateLetter)
   # crateLayout index are representative of each stack in the original layout with the last item in each array being on top 
+  print(crateLayout)
   moves = rows.splitlines()[10:]
+  
   for moveRow in moves:
     move = re.sub("[^0-9\s]", "", moveRow).split(' ') # filter out everything but numbers and spaces (to keep the number separated)
     while "" in move:
       # clean up the empty strings leftover
       move.remove("")
-    liftedCrates = crateLayout[int(move[1]) - 1][-int(move[0]):] # items picked up 
-    crateLayout[int(move[1]) - 1] = crateLayout[int(move[1]) - 1][:-int(move[0])] # items remaining in stack
-    crateLayout[int(move[2]) - 1] += liftedCrates # add lifted items onto designated stack
+    for moveNum in range(0, int(move[0])): # move[0] is number of items to move (number of times we loop)
+      movedValue = crateLayout[int(move[1]) - 1].pop() # remove the last value from the specified "stack"
+      crateLayout[int(move[2]) - 1].append(movedValue) # add it to the top of the specified stack
 
 for crate in crateLayout:
   print(crate)

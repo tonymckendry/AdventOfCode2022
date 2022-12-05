@@ -20,6 +20,7 @@ with open('input.txt') as inputFile:
         crateLayout[letterI].append(crateLetter)
   # crateLayout index are representative of each stack in the original layout with the last item in each array being on top 
   moves = rows.splitlines()[10:]
+  
   for moveRow in moves:
     move = re.sub("[^0-9\s]", "", moveRow).split(' ') # filter out everything but numbers and spaces (to keep the number separated)
     while "" in move:
