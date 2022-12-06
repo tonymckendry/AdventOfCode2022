@@ -12,7 +12,6 @@ wastedAssignments = 0
 
 with open('input.txt') as inputFile:
   for assignments in inputFile:
-  # for assignments in bs:
     [a, b] = assignments.split(',')
     a = list(map(int, a.split('-')))
     b = list(map(int, b.split('-')))

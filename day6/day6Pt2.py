@@ -4,8 +4,8 @@ found = False
 with open('input.txt') as inputFile:
   dataStream = inputFile.read()
   n = 14
-  setsOf4 = [dataStream[i:i+n] for i in range(len(dataStream)-n+1)]
-  for code in setsOf4:
+  setsOfCodes = [dataStream[i:i+n] for i in range(len(dataStream)-n+1)]
+  for code in setsOfCodes:
     index += 1
     correct = True
     for char in set(code):
@@ -14,5 +14,5 @@ with open('input.txt') as inputFile:
         correct = False
     if correct and found == False:
       found = True
-      print(index + (n-1)) # answer wants the character that makes the 4 character string appear as you iterate through
+      print(index + (n-1)) 
       
