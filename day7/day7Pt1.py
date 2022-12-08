@@ -79,17 +79,17 @@ with open('input.txt') as inputFile:
       # file
       deep_access(fs, encode(currentDir), command)
   
-  fileSystemSize = calculateTotalDirSize('', fs)
+  size = calculateTotalDirSize('', fs)
 
-  totalSystemSize = 70000000
-  updateSize = 30000000
-  neededSize = updateSize - (totalSystemSize - fileSystemSize) 
-
-  sortedSizes = sorted(calculatedSizes, key=lambda d: d['size'])
-  answer = 0
-  for s in sortedSizes:
-    print(s['size'])
-    if s['size'] >= neededSize and answer == 0:
-      answer = s['size']
-
+  # dir sizes are saved to an array as they are calculated
+  news = sorted(calculatedSizes, key=lambda d: d['size'])
+  # sort them, then find them ones less than or equal to 100000 then add them up 
+  y = []
+  for n in news: 
+    if n['size'] <= 100000:
+      y.append(n)
+  answer = 0    
+  for n in y:
+    answer += n['size']
   print(answer)
+    
